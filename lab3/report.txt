@@ -1,0 +1,19 @@
+From the user perspective, the program works as a simple text-based 4-function 
+calculator. The menu is repeatedly shown until an input value is entered. When
+a valid value is entered, the user is prompted for two values and the corresponding
+math operation is performed on them. The output of that operation is then shown to
+the user, and the menu is once again displayed. This process is repeated until the 
+user enters the appropriate value to exit the program. 
+
+Internally, a while loop is run in which the menu text is constantly displayed and the user's 
+input is repeatedly checked. Once an appropriate value is entered, an if conditional calls the 
+appropriate function for that math operation. Within the called 
+void function, the user is prompted to enter in values and the math operation is calculated.
+The result is then displayed to the user then the program returns to the main() function
+and re-enters the while loop. This process is ended when the value, 5, is entered and the while
+loop is exited using a break command. 
+
+Output of the program was verified to be correct using a standard 4-function
+calculator. The included iPhone calculator was used in order to check that the
+cmath functions were working properly. Another way to verify results would be to
+use simple arithmetic techniques manually.  

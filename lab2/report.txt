@@ -1,0 +1,16 @@
+The final part of the assignment required a program to be developed that
+generates a simple ASCII Art graph of a mathematical function. The program also stated
+the function and range after displaying the graph. The function and range chosen were
+y=x*sin(cos(x)) on the range [0,20].
+
+From the user perspective, once the program is run no other input is required. The
+program displays a line that states the function and the range then displays a graph of
+the function. THe graph reads line by line and also displays the corresponding x and y values.
+Once the graphing has ended, the program displays the location and value of an absolute minimum
+and maximum. If multiple maxima or minima exist, only a single location and value is displayed.
+
+On the back end, the domain was hard coded in and the values for y were determined through iteration 
+of a for loop. Varrious conditionals were used to keep track of the current max and mimimum values,
+as well as the locations of those values. A change in x value was also hard coded in. The larger 
+this value, the less detailed the graph would be. The correctness of the program, including the graph
+and the max and min values, were validated through an external graphing program. 

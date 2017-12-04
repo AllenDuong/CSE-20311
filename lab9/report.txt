@@ -1,0 +1,20 @@
+From the user perspective, when the crossword executable is run, a prompt appears asking for entry of words
+to be added to the crossword. If the entered word is not valid (ie longer than 15 characters or contains non-alpha
+characters) then a message is displayed and the word is skipped. After a "." is entered by the user, a crossword is generated
+and then the answer to that crossword is displayed alone with a gameboard, as well as clues. This crossword can now be solved
+manually by the user. If the user enters the name of an input file after the executable, then the words from sadi file are inputed
+and the rest is displayed normally. If an output file is also entered, then nothing is displayed, but instead all text is
+outputted to the file specified by the user. 
+
+Internally, a board class is created within which the board is created and all display is handled. The initialization of this
+object required a vector of strings that will be placed on the board. Those strings are first sorted in descending order by length
+and then copied over into a vector of words, a user defined structure which includes the starting point, phrase, and direction, of
+each word. 4 functions exist in order to check and place the words in descending order onto the board. For each word, every single
+coordinate on the board is checked for a matching letter and if that exists, that coordinate is checked for space in the vertical
+and horizontal position for placement validity. Vertical placement has precedence over horizontal placement. Once a word is place,
+the next word is then passed and the process repeats until all words have been checked for placement. If a word cannot be placed,
+a message is displayed to the user at the end of the output. The driver just determines what mode is being used and then parses in
+the input strings from either the user's keyboard or a text file. File output is done within a method.
+
+Verification was done through hours of checking text cases and manually drawing out words on paper and yelling why it's placing
+words next to each other. So much debugging. 

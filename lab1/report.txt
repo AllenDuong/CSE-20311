@@ -1,0 +1,18 @@
+	From the users perspective, the program is designed to find the 
+	missing side of a right triangle if the two other missing sides are 
+	provided. This program works for any combination of provided sides, 
+	given that the triangle is a right triangle.
+
+	The equation that Program 3 utilizes is the Pythagorean Theorem. The 
+	equation itself has two cases in regards to the arithmatic steps 
+	required. To provide the user with that choice, I utlilized a 
+	numerical user input and the switch function to break my program 
+	into cases. From there I calcuated the missing value using the pow() 
+	and sqrt() functions of the cmath.h library. Finally, the missing 
+	side is displayed via an output to the user.
+	
+	Evaluating the program for correctness included plugging in many 
+	various types of numbers. I added conditonal checks for basic errors 
+	such as negative numbers or if the hypotenuse is shorter than a 
+	base. Errors arise when values are entered that are beyond the 
+	capacity of an double variable type.

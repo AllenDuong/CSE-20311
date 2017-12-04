@@ -1,0 +1,121 @@
+// circularprimes.cpp
+// Name: Allen Duong
+//
+//	The number, 197, is called a circular prime because all rotations of the digits: 197, 971, and 719, are themselves prime.
+//	There are thirteen such primes below 100: 2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73, 79, and 97.
+//	How many circular primes are there below one million?
+
+#include<iostream>
+#include<iomanip>
+
+using namespace std;
+
+// Prototype Functions
+void genPrimes(); // Generate Primes up to 1,000,000
+bool circPrimeCheck(long int); // Check is a prime is circular
+
+// Declare Objects
+const int maxVal = 1000001; // Set maximum of values
+const int sqrtMax = 1001; // The square root of Maximum Value is 1000.0005
+bool prime[maxVal]; // True means NOT prime
+int primeArray[78500]; // The number of primes less than 1,000,000 = 78,498; found using Sieve code
+int nPrime = 0; // Counts prime numbers
+
+
+int main(){
+
+	long int j = 0;
+	int count = 0;
+	int wantMax = 100 ; // Maximum Value of primes u want
+
+	genPrimes();
+
+	cout << "The number of Primes below Desired Va1ue  Million is: " << nPrime << endl;
+
+	for (long int i = 0; i < nPrime; i++){
+
+	  if ((circPrimeCheck(primeArray[i])) && (primeArray[i]<= wantMax)  ) // Check all primes for circular
+			j++;
+	}
+
+	cout << "The number of Circular Primes below Desired Value is: " << j << endl;
+	cout << "They are as follows:" << endl << endl;
+
+	for (long int i = 0; i < nPrime; i++){
+
+	  if ((circPrimeCheck(primeArray[i])) && primeArray[i] <= wantMax){ // Check all primes for circular
+			
+			cout << setw(9) << primeArray[i] << setw(9);
+			count++;
+		}
+
+		if (count == 5){ // Makes sure there are 10 columns
+			cout << endl;
+			count = 0;
+		}
+			
+	}
+
+	cout << endl;
+
+
+	return 0;
+}
+
+void genPrimes(){ // Reimplementation of Sieve of Eratosthenes from old lab, but now a single function
+	int i = 0;
+	int j;
+
+	prime[0] = prime[1] = true; // 0 and 1 are not prime 
+
+	for (i = 4; i <= maxVal; i += 2){ // All even numbers are not prime
+		prime[i] = true;
+	}
+
+	primeArray[nPrime++] = 2; // First prime is 2, then increment nPrime
+
+	for (i = 3; i <= sqrtMax; i += 2){
+		if (!prime[i]){
+			primeArray[nPrime++] = i;
+			for (j = i * i; j <= maxVal; j += i)
+				prime[j] = true;
+		}
+	}
+
+	for (i = sqrtMax + 2; i <= maxVal; i += 2){
+		if (!prime[i]){
+			primeArray[nPrime++] = i;
+		}
+	}
+}
+
+
+// Check if a prime is also circular
+bool circPrimeCheck(long int n){
+
+	long int pow = 1;
+	long int j;
+
+	if (n < 10) // If prime is single digit, it is circular
+		return true;
+
+	while (pow <= n){ //Counts the digits in the prime number
+		pow *= 10;
+	}
+
+	pow /= 10; // Pow is now the value of how many digits there are
+
+	j = n;
+
+	while (1){
+
+		j = (j%pow) * 10 + j / pow; // Take right most digit and append to left
+
+		if (prime[j]) // If the right shifted value is NOT prime, return false
+			return false;
+		if (j == n) // If shifted through entirely, then break loop 
+			break;
+	}
+
+	return true;
+}
